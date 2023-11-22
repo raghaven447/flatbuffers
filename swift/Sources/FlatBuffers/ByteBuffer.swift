@@ -384,7 +384,7 @@ public struct ByteBuffer {
     _storage.memory.storeBytes(of: value, toByteOffset: index, as: T.self)
   }
 
-  /// Makes sure that buffer has enouch space for each of the objects that will be written into it
+  /// Makes sure that buffer has enough space for each of the objects that will be written into it
   /// - Parameter size: size of object
   @discardableResult
   @usableFromInline
