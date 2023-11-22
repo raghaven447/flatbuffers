@@ -3438,7 +3438,7 @@ one for the union data and one for the data types.
 C++ supports vectors of unions, but it isn't currently documented.
 </div>
 <div class="language-typescript">
-Typescript supports vectors of unions, but it isn't currently documented.
+TypeScript supports vectors of unions, but it isn't currently documented.
 </div>
 <div class="language-php">
 PHP supports vectors of unions, but it isn't currently documented.
