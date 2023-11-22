@@ -101,7 +101,7 @@ Please select your desired language for our quest:
 
 ## Where to Find the Example Code
 
-Samples demonstating the concepts in this example are located in the source code
+Samples demonstrating the concepts in this example are located in the source code
 package, under the `samples` directory. You can browse the samples on GitHub
 [here](https://github.com/google/flatbuffers/tree/master/samples).
 
