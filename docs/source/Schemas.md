@@ -63,7 +63,7 @@ mechanism for forward and backwards compatibility. Note that:
     stop writing them into your data for almost the same effect.
     Additionally you can mark them as `deprecated` as in the example
     above, which will prevent the generation of accessors in the
-    generated C++, as a way to enforce the field not being used any more.
+    generated C++, as a way to enforce the field not being used anymore.
     (careful: this may break code!).
 
 -   You may change field names and table names, if you're ok with your
