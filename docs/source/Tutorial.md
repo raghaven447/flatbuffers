@@ -3431,7 +3431,7 @@ table Movie {
 
 #### Creating
 
-Analagously to how a union adds two fields to a table a vector of unions creates two different vectors:
+Analogously to how a union adds two fields to a table a vector of unions creates two different vectors:
 one for the union data and one for the data types.
 
 <div class="language-cpp">
