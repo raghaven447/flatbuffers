@@ -17,7 +17,7 @@ We will illustrate usage with the following schema:
 
 @include grpc/samples/greeter/greeter.fbs
 
-When we run `flatc`, we pass in the `--grpc` option and generage an additional
+When we run `flatc`, we pass in the `--grpc` option and generate an additional
 `greeter.grpc.fb.h` and `greeter.grpc.fb.cc`.
 
 Example server code looks like this:
