@@ -344,7 +344,7 @@ public struct FlatBufferBuilder {
     ((~bufSize) &+ 1) & (elementSize - 1)
   }
 
-  /// Prealigns the buffer before writting a new object into the buffer
+  /// Prealigns the buffer before writing a new object into the buffer
   /// - Parameters:
   ///   - len:Length of the object
   ///   - alignment: Alignment type
@@ -357,7 +357,7 @@ public struct FlatBufferBuilder {
       elementSize: UOffset(alignment))))
   }
 
-  /// Prealigns the buffer before writting a new object into the buffer
+  /// Prealigns the buffer before writing a new object into the buffer
   /// - Parameters:
   ///   - len: Length of the object
   ///   - type: Type of the object to be written
