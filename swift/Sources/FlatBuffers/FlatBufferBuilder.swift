@@ -321,7 +321,7 @@ public struct FlatBufferBuilder {
     assert(!isNested, "Object serialization must not be nested")
   }
 
-  /// Changes the minimuim alignment of the buffer
+  /// Changes the minimum alignment of the buffer
   /// - Parameter size: size of the current alignment
   @inline(__always)
   @usableFromInline
