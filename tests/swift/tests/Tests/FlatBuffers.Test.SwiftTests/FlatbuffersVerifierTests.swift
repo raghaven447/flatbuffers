@@ -51,13 +51,13 @@ final class FlatbuffersVerifierTests: XCTestCase {
     // swiftformat:enable all
   }
 
-  func testVeriferInitPassing() {
+  func testVerifierInitPassing() {
     var buffer = ByteBuffer(initialSize: 0)
     buffer._storage = validStorage
     XCTAssertNoThrow(try Verifier(buffer: &buffer))
   }
 
-  func testVeriferInitFailing() {
+  func testVerifierInitFailing() {
     var buffer = ByteBuffer(initialSize: 0)
     buffer._storage = errorStorage
     XCTAssertThrowsError(try Verifier(buffer: &buffer))
@@ -74,8 +74,8 @@ final class FlatbuffersVerifierTests: XCTestCase {
     }
     XCTAssertNoThrow(try verifier.isAligned(position: 16, type: Int.self))
 
-    var newVerifer = try! Verifier(buffer: &buffer, checkAlignment: false)
-    XCTAssertNoThrow(try newVerifer.isAligned(position: 16, type: Int.self))
+    var newVerifier = try! Verifier(buffer: &buffer, checkAlignment: false)
+    XCTAssertNoThrow(try newVerifier.isAligned(position: 16, type: Int.self))
   }
 
   func testRangeInBuffer() {
@@ -122,45 +122,45 @@ final class FlatbuffersVerifierTests: XCTestCase {
   func testTableVerifier() {
     var verifier = try! Verifier(buffer: &validFlatbuffersObject)
 
-    var tableVerifer = try! verifier.visitTable(at: 48)
-    XCTAssertNoThrow(try tableVerifer.visit(
+    var tableVerifier = try! verifier.visitTable(at: 48)
+    XCTAssertNoThrow(try tableVerifier.visit(
       field: 4,
       fieldName: "Vec",
       required: false,
       type: Vec3.self))
-    XCTAssertNoThrow(try tableVerifer.visit(
+    XCTAssertNoThrow(try tableVerifier.visit(
       field: 8,
       fieldName: "hp",
       required: false,
       type: Int16.self))
 
-    XCTAssertNoThrow(try tableVerifer.visit(
+    XCTAssertNoThrow(try tableVerifier.visit(
       field: 10,
       fieldName: "name",
       required: true,
       type: ForwardOffset<String>.self))
 
-    XCTAssertNoThrow(try tableVerifer.visit(
+    XCTAssertNoThrow(try tableVerifier.visit(
       field: 14,
       fieldName: "inventory",
       required: false,
       type: ForwardOffset<Vector<UInt8, UInt8>>.self))
 
-    XCTAssertNoThrow(try tableVerifer.visit(
+    XCTAssertNoThrow(try tableVerifier.visit(
       field: 22,
       fieldName: "test4",
       required: false,
       type: ForwardOffset<Vector<MyGame_Example_Test, MyGame_Example_Test>>
         .self))
 
-    XCTAssertNoThrow(try tableVerifer.visit(
+    XCTAssertNoThrow(try tableVerifier.visit(
       field: 24,
       fieldName: "Vector of strings",
       required: false,
       type: ForwardOffset<Vector<ForwardOffset<String>, String>>.self))
 
     do {
-      try tableVerifer.visit(
+      try tableVerifier.visit(
         field: 13,
         fieldName: "notvalid",
         required: false,
@@ -172,7 +172,7 @@ final class FlatbuffersVerifierTests: XCTestCase {
     }
 
     do {
-      try tableVerifer.visit(
+      try tableVerifier.visit(
         unionKey: 18,
         unionField: 20,
         unionKeyName: "testType",
