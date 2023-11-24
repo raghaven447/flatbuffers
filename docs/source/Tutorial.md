@@ -1778,7 +1778,7 @@ a bit more flexibility.
   //ns(Monster_pos_add(&pos);
 
   ns(Monster_hp_add(B, hp));
-  // Notice that `Monser_name_add` adds a string reference unlike the
+  // Notice that `Monster_name_add` adds a string reference unlike the
   // add_str and add_strn variants.
   ns(Monster_name_add(B, name));
   ns(Monster_inventory_add(B, inventory));
