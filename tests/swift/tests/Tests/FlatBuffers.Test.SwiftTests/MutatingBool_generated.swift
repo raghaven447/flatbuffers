@@ -57,7 +57,7 @@ public struct Property_Mutable: FlatBufferObject {
 
   public var property: Bool { return _accessor.readBuffer(of: Bool.self, at: 0) }
   @discardableResult public func mutate(property: Bool) -> Bool { return _accessor.mutate(property, index: 0) }
-  
+
 
   public mutating func unpack() -> Property {
     return Property(&self)
@@ -100,7 +100,7 @@ public struct TestMutatingBool: FlatBufferObject, Verifiable, ObjectAPIPacker {
     TestMutatingBool.add(b: b, &fbb)
     return TestMutatingBool.endTestMutatingBool(&fbb, start: __start)
   }
-  
+
 
   public mutating func unpack() -> TestMutatingBoolT {
     return TestMutatingBoolT(&self)

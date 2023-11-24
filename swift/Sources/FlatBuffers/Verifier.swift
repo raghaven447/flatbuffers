@@ -93,7 +93,7 @@ public struct Verifier {
 
   /// Checks if the value of Size "X" is within the range of the buffer
   /// - Parameters:
-  ///   - position: Current postion to be read
+  ///   - position: Current position to be read
   ///   - size: `Byte` Size of readable object within the buffer
   /// - Throws: `outOfBounds` if the value is out of the bounds of the buffer
   /// and `apparentSizeTooLarge` if the apparent size is bigger than the one specified

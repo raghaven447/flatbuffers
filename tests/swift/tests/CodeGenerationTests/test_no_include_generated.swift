@@ -55,7 +55,7 @@ public struct BytesCount_Mutable: FlatBufferObject {
 
   public var x: Int64 { return _accessor.readBuffer(of: Int64.self, at: 0) }
   @discardableResult public func mutate(x: Int64) -> Bool { return _accessor.mutate(x, index: 0) }
-  
+
 
   public mutating func unpack() -> BytesCount {
     return BytesCount(&self)
@@ -98,7 +98,7 @@ public struct InternalMessage: FlatBufferObject, Verifiable, ObjectAPIPacker {
     InternalMessage.add(str: str, &fbb)
     return InternalMessage.endInternalMessage(&fbb, start: __start)
   }
-  
+
 
   public mutating func unpack() -> InternalMessageT {
     return InternalMessageT(&self)
@@ -192,7 +192,7 @@ public struct Message: FlatBufferObject, Verifiable, ObjectAPIPacker {
     Message.add(pointer: pointer, &fbb)
     return Message.endMessage(&fbb, start: __start)
   }
-  
+
 
   public mutating func unpack() -> MessageT {
     return MessageT(&self)
