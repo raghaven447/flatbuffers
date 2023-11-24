@@ -173,9 +173,9 @@ class FlatBuffersMonsterWriterTests: XCTestCase {
           return false
         }
         baseAddress = baseAddress.advanced(by: 1)
-        let unlignedPtr = UnsafeMutableRawPointer(baseAddress)
+        let unalignedPtr = UnsafeMutableRawPointer(baseAddress)
         var bytes = ByteBuffer(
-          assumingMemoryBound: unlignedPtr,
+          assumingMemoryBound: unalignedPtr,
           capacity: ptr.count - 1,
           allowReadingUnalignedBuffers: true)
         var monster: Monster = getRoot(byteBuffer: &bytes)
@@ -198,9 +198,9 @@ class FlatBuffersMonsterWriterTests: XCTestCase {
           return false
         }
         baseAddress = baseAddress.advanced(by: 1)
-        let unlignedPtr = UnsafeMutableRawPointer(baseAddress)
+        let unalignedPtr = UnsafeMutableRawPointer(baseAddress)
         let bytes = ByteBuffer(
-          assumingMemoryBound: unlignedPtr,
+          assumingMemoryBound: unalignedPtr,
           capacity: ptr.count - 1,
           allowReadingUnalignedBuffers: false)
         var newBuf = FlatBuffersUtils.removeSizePrefix(bb: bytes)
