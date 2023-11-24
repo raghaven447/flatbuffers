@@ -1432,7 +1432,7 @@ class PythonGenerator : public BaseGenerator {
         GenIndents(5) + "self." + field_field + ".append(" + one_instance + ")";
   }
 
-  void GenUnpackforScalarVectorHelper(const StructDef &struct_def,
+  void GenUnpackForScalarVectorHelper(const StructDef &struct_def,
                                       const FieldDef &field,
                                       std::string *code_ptr,
                                       int indents) const {
@@ -1461,12 +1461,12 @@ class PythonGenerator : public BaseGenerator {
 
     // String does not have the AsNumpy method.
     if (!(IsScalar(field.value.type.VectorType().base_type))) {
-      GenUnpackforScalarVectorHelper(struct_def, field, code_ptr, 3);
+      GenUnpackForScalarVectorHelper(struct_def, field, code_ptr, 3);
       return;
     }
 
     code += GenIndents(3) + "if np is None:";
-    GenUnpackforScalarVectorHelper(struct_def, field, code_ptr, 4);
+    GenUnpackForScalarVectorHelper(struct_def, field, code_ptr, 4);
 
     // If numpy exists, use the AsNumpy method to optimize the unpack speed.
     code += GenIndents(3) + "else:";
