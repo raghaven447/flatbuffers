@@ -85,7 +85,7 @@ public struct ByteBuffer {
       }
 
       /// solution take from Apple-NIO
-      capacity = capacity.convertToPowerofTwo
+      capacity = capacity.convertToPowerOfTwo
 
       let newData = UnsafeMutableRawPointer.allocate(
         byteCount: capacity,
@@ -161,7 +161,7 @@ public struct ByteBuffer {
   ///   - size: Length of the buffer
   ///   - allowReadingUnalignedBuffers: allow reading from unaligned buffer
   init(initialSize size: Int) {
-    let size = size.convertToPowerofTwo
+    let size = size.convertToPowerOfTwo
     _storage = Storage(count: size, alignment: alignment)
     _storage.initialize(for: size)
     allowReadingUnalignedBuffers = false
