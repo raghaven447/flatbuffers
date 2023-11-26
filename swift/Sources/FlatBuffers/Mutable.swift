@@ -25,7 +25,7 @@ public protocol Mutable {
   /// makes Flatbuffer accessed within the Protocol
   var bb: ByteBuffer { get }
   /// makes position of the ``Table``/``struct`` accessed within the Protocol
-  var postion: Int32 { get }
+  var position: Int32 { get }
 }
 
 extension Mutable {
@@ -49,7 +49,7 @@ extension Mutable where Self == Table {
   ///   - index: index of the Element
   public func mutate<T: Scalar>(_ value: T, index: Int32) -> Bool {
     guard index != 0 else { return false }
-    return mutate(value: value, o: index + postion)
+    return mutate(value: value, o: index + position)
   }
 
   /// Directly mutates the element by calling mutate
@@ -70,7 +70,7 @@ extension Mutable where Self == Struct {
   ///   - value: New value to be inserted to the buffer
   ///   - index: index of the Element
   public func mutate<T: Scalar>(_ value: T, index: Int32) -> Bool {
-    mutate(value: value, o: index + postion)
+    mutate(value: value, o: index + position)
   }
 
   /// Directly mutates the element by calling mutate

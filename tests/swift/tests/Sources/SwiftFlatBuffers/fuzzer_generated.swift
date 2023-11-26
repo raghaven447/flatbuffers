@@ -112,7 +112,7 @@ public struct Vec3: NativeStruct, Verifiable, FlatbuffersInitializable {
     _z = _accessor.readBuffer(of: Float32.self, at: 8)
     _test1 = _accessor.readBuffer(of: Double.self, at: 16)
     _test2 = _accessor.readBuffer(of: UInt8.self, at: 24)
-    _test3 = Test(_accessor.bb, o: _accessor.postion + 26)
+    _test3 = Test(_accessor.bb, o: _accessor.position + 26)
   }
 
   public init(x: Float32, y: Float32, z: Float32, test1: Double, test2: Color, test3: Test) {
@@ -189,7 +189,7 @@ public struct Vec3_Mutable: FlatBufferObject {
   public var z: Float32 { return _accessor.readBuffer(of: Float32.self, at: 8) }
   public var test1: Double { return _accessor.readBuffer(of: Double.self, at: 16) }
   public var test2: Color { return Color(rawValue: _accessor.readBuffer(of: UInt8.self, at: 24)) ?? .red }
-  public var test3: Test_Mutable { return Test_Mutable(_accessor.bb, o: _accessor.postion + 26) }
+  public var test3: Test_Mutable { return Test_Mutable(_accessor.bb, o: _accessor.position + 26) }
 }
 
 ///  an example documentation comment: "monster object"
@@ -217,7 +217,7 @@ public struct Monster: FlatBufferObject, Verifiable {
   }
 
   public var pos: Vec3? { let o = _accessor.offset(VTOFFSET.pos.v); return o == 0 ? nil : _accessor.readBuffer(of: Vec3.self, at: o) }
-  public var mutablePos: Vec3_Mutable? { let o = _accessor.offset(VTOFFSET.pos.v); return o == 0 ? nil : Vec3_Mutable(_accessor.bb, o: o + _accessor.postion) }
+  public var mutablePos: Vec3_Mutable? { let o = _accessor.offset(VTOFFSET.pos.v); return o == 0 ? nil : Vec3_Mutable(_accessor.bb, o: o + _accessor.position) }
   public var mana: Int16 { let o = _accessor.offset(VTOFFSET.mana.v); return o == 0 ? 150 : _accessor.readBuffer(of: Int16.self, at: o) }
   public var hp: Int16 { let o = _accessor.offset(VTOFFSET.hp.v); return o == 0 ? 100 : _accessor.readBuffer(of: Int16.self, at: o) }
   public var name: String! { let o = _accessor.offset(VTOFFSET.name.v); return _accessor.string(at: o) }
@@ -262,7 +262,7 @@ public struct Monster: FlatBufferObject, Verifiable {
   }
   public static func sortVectorOfMonster(offsets:[Offset], _ fbb: inout FlatBufferBuilder) -> Offset {
     var off = offsets
-    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 10, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 10, fbb: fbb.buffer), fbb: fbb.buffer) < 0 } 
+    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 10, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 10, fbb: fbb.buffer), fbb: fbb.buffer) < 0 }
     return fbb.createVector(ofOffsets: off)
   }
   fileprivate static func lookupByKey(vector: Int32, key: String, fbb: ByteBuffer) -> Monster? {
