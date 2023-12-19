@@ -134,7 +134,7 @@ def AddCalls(builder, calls):
 def ServiceStartCallsVector(builder, numElems):
     return builder.StartVector(4, numElems, 4)
 
-def StartCallsVector(builder, numElems):
+def StartCallsVector(builder, numElems: int) -> int:
     return ServiceStartCallsVector(builder, numElems)
 
 def ServiceAddAttributes(builder, attributes):
@@ -146,7 +146,7 @@ def AddAttributes(builder, attributes):
 def ServiceStartAttributesVector(builder, numElems):
     return builder.StartVector(4, numElems, 4)
 
-def StartAttributesVector(builder, numElems):
+def StartAttributesVector(builder, numElems: int) -> int:
     return ServiceStartAttributesVector(builder, numElems)
 
 def ServiceAddDocumentation(builder, documentation):
@@ -158,7 +158,7 @@ def AddDocumentation(builder, documentation):
 def ServiceStartDocumentationVector(builder, numElems):
     return builder.StartVector(4, numElems, 4)
 
-def StartDocumentationVector(builder, numElems):
+def StartDocumentationVector(builder, numElems: int) -> int:
     return ServiceStartDocumentationVector(builder, numElems)
 
 def ServiceAddDeclarationFile(builder, declarationFile):

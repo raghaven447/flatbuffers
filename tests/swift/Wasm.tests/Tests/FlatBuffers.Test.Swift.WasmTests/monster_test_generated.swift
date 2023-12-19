@@ -301,7 +301,7 @@ public struct MyGame_Example_Test_Mutable: FlatBufferObject {
   @discardableResult public func mutate(a: Int16) -> Bool { return _accessor.mutate(a, index: 0) }
   public var b: Int8 { return _accessor.readBuffer(of: Int8.self, at: 2) }
   @discardableResult public func mutate(b: Int8) -> Bool { return _accessor.mutate(b, index: 2) }
-
+  
 
   public mutating func unpack() -> MyGame_Example_Test {
     return MyGame_Example_Test(&self)
@@ -430,7 +430,7 @@ public struct MyGame_Example_Vec3_Mutable: FlatBufferObject {
   public var test2: MyGame_Example_Color { return MyGame_Example_Color(rawValue: _accessor.readBuffer(of: UInt8.self, at: 24)) ?? .red }
   @discardableResult public func mutate(test2: MyGame_Example_Color) -> Bool { return _accessor.mutate(test2.rawValue, index: 24) }
   public var test3: MyGame_Example_Test_Mutable { return MyGame_Example_Test_Mutable(_accessor.bb, o: _accessor.position + 26) }
-
+  
 
   public mutating func unpack() -> MyGame_Example_Vec3 {
     return MyGame_Example_Vec3(&self)
@@ -510,7 +510,7 @@ public struct MyGame_Example_Ability_Mutable: FlatBufferObject {
   @discardableResult public func mutate(id: UInt32) -> Bool { return _accessor.mutate(id, index: 0) }
   public var distance: UInt32 { return _accessor.readBuffer(of: UInt32.self, at: 4) }
   @discardableResult public func mutate(distance: UInt32) -> Bool { return _accessor.mutate(distance, index: 4) }
-
+  
 
   public mutating func unpack() -> MyGame_Example_Ability {
     return MyGame_Example_Ability(&self)
@@ -596,7 +596,7 @@ public struct MyGame_Example_StructOfStructs_Mutable: FlatBufferObject {
   public var a: MyGame_Example_Ability_Mutable { return MyGame_Example_Ability_Mutable(_accessor.bb, o: _accessor.position + 0) }
   public var b: MyGame_Example_Test_Mutable { return MyGame_Example_Test_Mutable(_accessor.bb, o: _accessor.position + 8) }
   public var c: MyGame_Example_Ability_Mutable { return MyGame_Example_Ability_Mutable(_accessor.bb, o: _accessor.position + 12) }
-
+  
 
   public mutating func unpack() -> MyGame_Example_StructOfStructs {
     return MyGame_Example_StructOfStructs(&self)
@@ -662,7 +662,7 @@ public struct MyGame_Example_StructOfStructsOfStructs_Mutable: FlatBufferObject 
   public init(_ bb: ByteBuffer, o: Int32) { _accessor = Struct(bb: bb, position: o) }
 
   public var a: MyGame_Example_StructOfStructs_Mutable { return MyGame_Example_StructOfStructs_Mutable(_accessor.bb, o: _accessor.position + 0) }
-
+  
 
   public mutating func unpack() -> MyGame_Example_StructOfStructsOfStructs {
     return MyGame_Example_StructOfStructsOfStructs(&self)
@@ -683,14 +683,14 @@ public struct MyGame_InParentNamespace: FlatBufferObject, Verifiable, ObjectAPIP
   public var __buffer: ByteBuffer! { return _accessor.bb }
   private var _accessor: Table
 
-  public static var id: String { "MONS" }
+  public static var id: String { "MONS" } 
   public static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: MyGame_InParentNamespace.id, addPrefix: prefix) }
   private init(_ t: Table) { _accessor = t }
   public init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
 
   public static func startInParentNamespace(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 0) }
   public static func endInParentNamespace(_ fbb: inout FlatBufferBuilder, start: UOffset) -> Offset { let end = Offset(offset: fbb.endTable(at: start)); return end }
-
+  
 
   public mutating func unpack() -> MyGame_InParentNamespaceT {
     return MyGame_InParentNamespaceT(&self)
@@ -735,14 +735,14 @@ public struct MyGame_Example2_Monster: FlatBufferObject, Verifiable, ObjectAPIPa
   public var __buffer: ByteBuffer! { return _accessor.bb }
   private var _accessor: Table
 
-  public static var id: String { "MONS" }
+  public static var id: String { "MONS" } 
   public static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: MyGame_Example2_Monster.id, addPrefix: prefix) }
   private init(_ t: Table) { _accessor = t }
   public init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
 
   public static func startMonster(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 0) }
   public static func endMonster(_ fbb: inout FlatBufferBuilder, start: UOffset) -> Offset { let end = Offset(offset: fbb.endTable(at: start)); return end }
-
+  
 
   public mutating func unpack() -> MyGame_Example2_MonsterT {
     return MyGame_Example2_MonsterT(&self)
@@ -787,7 +787,7 @@ internal struct MyGame_Example_TestSimpleTableWithEnum: FlatBufferObject, Verifi
   internal var __buffer: ByteBuffer! { return _accessor.bb }
   private var _accessor: Table
 
-  internal static var id: String { "MONS" }
+  internal static var id: String { "MONS" } 
   internal static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: MyGame_Example_TestSimpleTableWithEnum.id, addPrefix: prefix) }
   private init(_ t: Table) { _accessor = t }
   internal init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
@@ -811,7 +811,7 @@ internal struct MyGame_Example_TestSimpleTableWithEnum: FlatBufferObject, Verifi
     MyGame_Example_TestSimpleTableWithEnum.add(color: color, &fbb)
     return MyGame_Example_TestSimpleTableWithEnum.endTestSimpleTableWithEnum(&fbb, start: __start)
   }
-
+  
 
   internal mutating func unpack() -> MyGame_Example_TestSimpleTableWithEnumT {
     return MyGame_Example_TestSimpleTableWithEnumT(&self)
@@ -868,7 +868,7 @@ public struct MyGame_Example_Stat: FlatBufferObject, Verifiable, ObjectAPIPacker
   public var __buffer: ByteBuffer! { return _accessor.bb }
   private var _accessor: Table
 
-  public static var id: String { "MONS" }
+  public static var id: String { "MONS" } 
   public static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: MyGame_Example_Stat.id, addPrefix: prefix) }
   private init(_ t: Table) { _accessor = t }
   public init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
@@ -906,7 +906,7 @@ public struct MyGame_Example_Stat: FlatBufferObject, Verifiable, ObjectAPIPacker
   }
   public static func sortVectorOfStat(offsets:[Offset], _ fbb: inout FlatBufferBuilder) -> Offset {
     var off = offsets
-    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 8, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 8, fbb: fbb.buffer), fbb: fbb.buffer) < 0 }
+    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 8, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 8, fbb: fbb.buffer), fbb: fbb.buffer) < 0 } 
     return fbb.createVector(ofOffsets: off)
   }
   fileprivate static func lookupByKey(vector: Int32, key: UInt16, fbb: ByteBuffer) -> MyGame_Example_Stat? {
@@ -928,7 +928,7 @@ public struct MyGame_Example_Stat: FlatBufferObject, Verifiable, ObjectAPIPacker
     }
     return nil
   }
-
+  
 
   public mutating func unpack() -> MyGame_Example_StatT {
     return MyGame_Example_StatT(&self)
@@ -1007,7 +1007,7 @@ public struct MyGame_Example_Referrable: FlatBufferObject, Verifiable, ObjectAPI
   public var __buffer: ByteBuffer! { return _accessor.bb }
   private var _accessor: Table
 
-  public static var id: String { "MONS" }
+  public static var id: String { "MONS" } 
   public static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: MyGame_Example_Referrable.id, addPrefix: prefix) }
   private init(_ t: Table) { _accessor = t }
   public init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
@@ -1033,7 +1033,7 @@ public struct MyGame_Example_Referrable: FlatBufferObject, Verifiable, ObjectAPI
   }
   public static func sortVectorOfReferrable(offsets:[Offset], _ fbb: inout FlatBufferBuilder) -> Offset {
     var off = offsets
-    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 4, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 4, fbb: fbb.buffer), fbb: fbb.buffer) < 0 }
+    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 4, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 4, fbb: fbb.buffer), fbb: fbb.buffer) < 0 } 
     return fbb.createVector(ofOffsets: off)
   }
   fileprivate static func lookupByKey(vector: Int32, key: UInt64, fbb: ByteBuffer) -> MyGame_Example_Referrable? {
@@ -1055,7 +1055,7 @@ public struct MyGame_Example_Referrable: FlatBufferObject, Verifiable, ObjectAPI
     }
     return nil
   }
-
+  
 
   public mutating func unpack() -> MyGame_Example_ReferrableT {
     return MyGame_Example_ReferrableT(&self)
@@ -1113,7 +1113,7 @@ public struct MyGame_Example_Monster: FlatBufferObject, Verifiable, ObjectAPIPac
   public var __buffer: ByteBuffer! { return _accessor.bb }
   private var _accessor: Table
 
-  public static var id: String { "MONS" }
+  public static var id: String { "MONS" } 
   public static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: MyGame_Example_Monster.id, addPrefix: prefix) }
   private init(_ t: Table) { _accessor = t }
   public init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
@@ -1549,7 +1549,7 @@ public struct MyGame_Example_Monster: FlatBufferObject, Verifiable, ObjectAPIPac
   }
   public static func sortVectorOfMonster(offsets:[Offset], _ fbb: inout FlatBufferBuilder) -> Offset {
     var off = offsets
-    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 10, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 10, fbb: fbb.buffer), fbb: fbb.buffer) < 0 }
+    off.sort { Table.compare(Table.offset(Int32($1.o), vOffset: 10, fbb: fbb.buffer), Table.offset(Int32($0.o), vOffset: 10, fbb: fbb.buffer), fbb: fbb.buffer) < 0 } 
     return fbb.createVector(ofOffsets: off)
   }
   fileprivate static func lookupByKey(vector: Int32, key: String, fbb: ByteBuffer) -> MyGame_Example_Monster? {
@@ -1572,7 +1572,7 @@ public struct MyGame_Example_Monster: FlatBufferObject, Verifiable, ObjectAPIPac
     }
     return nil
   }
-
+  
 
   public mutating func unpack() -> MyGame_Example_MonsterT {
     return MyGame_Example_MonsterT(&self)
@@ -2409,7 +2409,7 @@ public struct MyGame_Example_TypeAliases: FlatBufferObject, Verifiable, ObjectAP
   public var __buffer: ByteBuffer! { return _accessor.bb }
   private var _accessor: Table
 
-  public static var id: String { "MONS" }
+  public static var id: String { "MONS" } 
   public static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: MyGame_Example_TypeAliases.id, addPrefix: prefix) }
   private init(_ t: Table) { _accessor = t }
   public init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
@@ -2505,7 +2505,7 @@ public struct MyGame_Example_TypeAliases: FlatBufferObject, Verifiable, ObjectAP
     MyGame_Example_TypeAliases.addVectorOf(vf64: vf64, &fbb)
     return MyGame_Example_TypeAliases.endTypeAliases(&fbb, start: __start)
   }
-
+  
 
   public mutating func unpack() -> MyGame_Example_TypeAliasesT {
     return MyGame_Example_TypeAliasesT(&self)
