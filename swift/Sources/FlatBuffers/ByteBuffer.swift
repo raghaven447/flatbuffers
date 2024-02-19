@@ -71,7 +71,7 @@ public struct ByteBuffer {
     func initialize(for size: Int) {
       assert(
         !unowned,
-        "initalize should NOT be called on a buffer that is built by assumingMemoryBound")
+        "initialize should NOT be called on a buffer that is built by assumingMemoryBound")
       memset(memory, 0, size)
     }
 
@@ -85,7 +85,7 @@ public struct ByteBuffer {
       }
 
       /// solution take from Apple-NIO
-      capacity = capacity.convertToPowerofTwo
+      capacity = capacity.convertToPowerOfTwo
 
       let newData = UnsafeMutableRawPointer.allocate(
         byteCount: capacity,
@@ -104,7 +104,7 @@ public struct ByteBuffer {
 
   /// The size of the elements written to the buffer + their paddings
   private var _writerSize: Int = 0
-  /// Aliginment of the current  memory being written to the buffer
+  /// Alignment of the current  memory being written to the buffer
   var alignment = 1
   /// Current Index which is being used to write to the buffer, it is written from the end to the start of the buffer
   var writerIndex: Int { _storage.capacity &- _writerSize }
@@ -161,7 +161,7 @@ public struct ByteBuffer {
   ///   - size: Length of the buffer
   ///   - allowReadingUnalignedBuffers: allow reading from unaligned buffer
   init(initialSize size: Int) {
-    let size = size.convertToPowerofTwo
+    let size = size.convertToPowerOfTwo
     _storage = Storage(count: size, alignment: alignment)
     _storage.initialize(for: size)
     allowReadingUnalignedBuffers = false
@@ -384,7 +384,7 @@ public struct ByteBuffer {
     _storage.memory.storeBytes(of: value, toByteOffset: index, as: T.self)
   }
 
-  /// Makes sure that buffer has enouch space for each of the objects that will be written into it
+  /// Makes sure that buffer has enough space for each of the objects that will be written into it
   /// - Parameter size: size of object
   @discardableResult
   @usableFromInline

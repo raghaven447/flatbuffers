@@ -101,7 +101,7 @@ Please select your desired language for our quest:
 
 ## Where to Find the Example Code
 
-Samples demonstating the concepts in this example are located in the source code
+Samples demonstrating the concepts in this example are located in the source code
 package, under the `samples` directory. You can browse the samples on GitHub
 [here](https://github.com/google/flatbuffers/tree/master/samples).
 
@@ -1778,7 +1778,7 @@ a bit more flexibility.
   //ns(Monster_pos_add(&pos);
 
   ns(Monster_hp_add(B, hp));
-  // Notice that `Monser_name_add` adds a string reference unlike the
+  // Notice that `Monster_name_add` adds a string reference unlike the
   // add_str and add_strn variants.
   ns(Monster_name_add(B, name));
   ns(Monster_inventory_add(B, inventory));
@@ -3431,14 +3431,14 @@ table Movie {
 
 #### Creating
 
-Analagously to how a union adds two fields to a table a vector of unions creates two different vectors:
+Analogously to how a union adds two fields to a table a vector of unions creates two different vectors:
 one for the union data and one for the data types.
 
 <div class="language-cpp">
 C++ supports vectors of unions, but it isn't currently documented.
 </div>
 <div class="language-typescript">
-Typescript supports vectors of unions, but it isn't currently documented.
+TypeScript supports vectors of unions, but it isn't currently documented.
 </div>
 <div class="language-php">
 PHP supports vectors of unions, but it isn't currently documented.

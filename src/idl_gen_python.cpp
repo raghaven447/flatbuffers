@@ -55,10 +55,10 @@ static Namer::Config PythonDefaultConfig() {
            /*fields=*/Case::kLowerCamel,
            /*variable=*/Case::kLowerCamel,
            /*variants=*/Case::kKeep,
-           /*enum_variant_seperator=*/".",
+           /*enum_variant_separator=*/".",
            /*escape_keywords=*/Namer::Config::Escape::BeforeConvertingCase,
            /*namespaces=*/Case::kKeep,  // Packages in python.
-           /*namespace_seperator=*/".",
+           /*namespace_separator=*/".",
            /*object_prefix=*/"",
            /*object_suffix=*/"T",
            /*keyword_prefix=*/"",
@@ -645,7 +645,7 @@ class PythonGenerator : public BaseGenerator {
     code += "):\n";
   }
 
-  // Recursively generate struct construction statements and instert manual
+  // Recursively generate struct construction statements and insert manual
   // padding.
   void StructBuilderBody(const StructDef &struct_def, const char *nameprefix,
                          std::string *code_ptr, size_t index = 0,
@@ -1032,7 +1032,7 @@ class PythonGenerator : public BaseGenerator {
       // Generates the SizeOf method for all structs.
       GenStructSizeOf(struct_def, code_ptr);
     }
-    // Generates the Init method that sets the field in a pre-existing
+    // Generates the Init method that sets the field in a preexisting
     // accessor object. This is to allow object reuse.
     InitializeExisting(struct_def, code_ptr);
     for (auto it = struct_def.fields.vec.begin();
@@ -1067,7 +1067,7 @@ class PythonGenerator : public BaseGenerator {
     code += "\n";
   }
 
-  // Gets the accoresponding python builtin type of a BaseType for scalars and
+  // Gets the corresponding python builtin type of a BaseType for scalars and
   // string.
   std::string GetBasePythonTypeForScalarAndString(
       const BaseType &base_type) const {
@@ -1219,7 +1219,7 @@ class PythonGenerator : public BaseGenerator {
       }
 
       const auto default_value = GetDefaultValue(field);
-      // Wrties the init statement.
+      // Writes the init statement.
       const auto field_field = namer_.Field(field);
       code += GenIndents(2) + "self." + field_field + " = " + default_value +
               "  # type: " + field_type;
@@ -1314,7 +1314,7 @@ class PythonGenerator : public BaseGenerator {
       auto &field = **it;
       if (field.deprecated) continue;
 
-      // Wrties the comparison statement for this field.
+      // Writes the comparison statement for this field.
       const auto field_field = namer_.Field(field);
       code += " and \\" + GenIndents(3) + "self." + field_field +
               " == " + "other." + field_field;
@@ -1432,7 +1432,7 @@ class PythonGenerator : public BaseGenerator {
         GenIndents(5) + "self." + field_field + ".append(" + one_instance + ")";
   }
 
-  void GenUnpackforScalarVectorHelper(const StructDef &struct_def,
+  void GenUnpackForScalarVectorHelper(const StructDef &struct_def,
                                       const FieldDef &field,
                                       std::string *code_ptr,
                                       int indents) const {
@@ -1461,12 +1461,12 @@ class PythonGenerator : public BaseGenerator {
 
     // String does not have the AsNumpy method.
     if (!(IsScalar(field.value.type.VectorType().base_type))) {
-      GenUnpackforScalarVectorHelper(struct_def, field, code_ptr, 3);
+      GenUnpackForScalarVectorHelper(struct_def, field, code_ptr, 3);
       return;
     }
 
     code += GenIndents(3) + "if np is None:";
-    GenUnpackforScalarVectorHelper(struct_def, field, code_ptr, 4);
+    GenUnpackForScalarVectorHelper(struct_def, field, code_ptr, 4);
 
     // If numpy exists, use the AsNumpy method to optimize the unpack speed.
     code += GenIndents(3) + "else:";

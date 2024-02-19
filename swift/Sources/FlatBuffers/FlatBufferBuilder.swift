@@ -42,9 +42,9 @@ public struct FlatBufferBuilder {
   private var _vtables: [UOffset] = []
   /// A check if the buffer is being written into by a different table
   private var isNested = false
-  /// Dictonary that stores a map of all the strings that were written to the buffer
+  /// Dictionary that stores a map of all the strings that were written to the buffer
   private var stringOffsetMap: [String: Offset] = [:]
-  /// A check to see if finish(::) was ever called to retreive data object
+  /// A check to see if finish(::) was ever called to retrieve data object
   private var finished = false
   /// A check to see if the buffer should serialize Default values
   private var serializeDefaults: Bool
@@ -121,7 +121,7 @@ public struct FlatBufferBuilder {
     serializeDefaults force: Bool = false)
   {
     assert(initialSize > 0, "Size should be greater than zero!")
-    guard isLitteEndian else {
+    guard isLittleEndian else {
       fatalError(
         "Reading/Writing a buffer in big endian machine is not supported on swift")
     }
@@ -321,7 +321,7 @@ public struct FlatBufferBuilder {
     assert(!isNested, "Object serialization must not be nested")
   }
 
-  /// Changes the minimuim alignment of the buffer
+  /// Changes the minimum alignment of the buffer
   /// - Parameter size: size of the current alignment
   @inline(__always)
   @usableFromInline
@@ -344,7 +344,7 @@ public struct FlatBufferBuilder {
     ((~bufSize) &+ 1) & (elementSize - 1)
   }
 
-  /// Prealigns the buffer before writting a new object into the buffer
+  /// Prealigns the buffer before writing a new object into the buffer
   /// - Parameters:
   ///   - len:Length of the object
   ///   - alignment: Alignment type
@@ -357,7 +357,7 @@ public struct FlatBufferBuilder {
       elementSize: UOffset(alignment))))
   }
 
-  /// Prealigns the buffer before writting a new object into the buffer
+  /// Prealigns the buffer before writing a new object into the buffer
   /// - Parameters:
   ///   - len: Length of the object
   ///   - type: Type of the object to be written
@@ -737,7 +737,7 @@ public struct FlatBufferBuilder {
     return offset
   }
 
-  // MARK: - Inseting offsets
+  // MARK: - Insetting offsets
 
   /// Writes the ``Offset`` of an already written table
   ///
@@ -815,7 +815,7 @@ public struct FlatBufferBuilder {
   /// *NOTE: Never call this manually*
   ///
   /// - Parameter element: Element to insert
-  /// - returns: Postion of the Element
+  /// - returns: Position of the Element
   @inline(__always)
   @discardableResult
   mutating public func push<T: Scalar>(element: T) -> UOffset {
@@ -849,11 +849,11 @@ extension FlatBufferBuilder: CustomDebugStringConvertible {
     private var memoryInUse = false
     /// Size of FieldLoc in memory
     let size = MemoryLayout<FieldLoc>.stride
-    /// Memeory buffer
+    /// Memory buffer
     var memory: UnsafeMutableRawBufferPointer!
     /// Capacity of the current buffer
     var capacity: Int = 0
-    /// Maximuim offset written to the class
+    /// Maximum offset written to the class
     var maxOffset: VOffset = 0
     /// number of fields written into the buffer
     var numOfFields: Int = 0

@@ -49,8 +49,8 @@ grpc::string GenerateMethodInput(const grpc_generator::Method *method) {
 
 void GenerateStub(const grpc_generator::Service *service,
                   grpc_generator::Printer *printer,
-                  std::map<grpc::string, grpc::string> *dictonary) {
-  auto vars = *dictonary;
+                  std::map<grpc::string, grpc::string> *dictionary) {
+  auto vars = *dictionary;
   printer->Print(vars, "class $ServiceName$Stub(object):\n");
   printer->Indent();
   printer->Print("\"\"\" Interface exported by the server. \"\"\"");
@@ -80,8 +80,8 @@ void GenerateStub(const grpc_generator::Service *service,
 
 void GenerateServicer(const grpc_generator::Service *service,
                       grpc_generator::Printer *printer,
-                      std::map<grpc::string, grpc::string> *dictonary) {
-  auto vars = *dictonary;
+                      std::map<grpc::string, grpc::string> *dictionary) {
+  auto vars = *dictionary;
   printer->Print(vars, "class $ServiceName$Servicer(object):\n");
   printer->Indent();
   printer->Print("\"\"\" Interface exported by the server. \"\"\"");
@@ -106,8 +106,8 @@ void GenerateServicer(const grpc_generator::Service *service,
 
 void GenerateRegister(const grpc_generator::Service *service,
                       grpc_generator::Printer *printer,
-                      std::map<grpc::string, grpc::string> *dictonary) {
-  auto vars = *dictonary;
+                      std::map<grpc::string, grpc::string> *dictionary) {
+  auto vars = *dictionary;
   printer->Print(vars, "def add_$ServiceName$Servicer_to_server(servicer, server):\n");
   printer->Indent();
   printer->Print("rpc_method_handlers = {\n");

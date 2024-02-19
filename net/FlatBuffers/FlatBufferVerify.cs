@@ -107,7 +107,7 @@ namespace Google.FlatBuffers
     {
       // Verifier buffer
       verifier_buffer = null;
-      // Verifier settings 
+      // Verifier settings
       verifier_options = null;
       // Depth counter
       depth_cnt = 0;
@@ -117,7 +117,7 @@ namespace Google.FlatBuffers
 
     /// <summary> The Constructor of the Verifier object with input parameters: ByteBuffer and/or Options </summary>
     /// <param name="buf"> Input flat byte buffer defined as ByteBuffer type</param>
-    /// <param name="options"> Options object with settings for the coniguration the Verifier </param>
+    /// <param name="options"> Options object with settings for the configuration the Verifier </param>
     public Verifier(ByteBuffer buf, Options options = null)
     {
       verifier_buffer = buf;
@@ -236,7 +236,7 @@ namespace Google.FlatBuffers
     private short GetVRelOffset(int pos, short vtableOffset)
     {
       short VOffset = 0;
-      // Used try/catch because pos typa as int 32bit
+      // Used try/catch because pos type is int 32bit
       try
       {
         // First, get vtable offset
@@ -261,7 +261,7 @@ namespace Google.FlatBuffers
 
     }
     /// <summary> Get table data area absolute offset from vtable. Result is the absolute buffer offset.
-    /// The result value offset cannot be '0' (pointing to itself) so after validation this method returnes '0'
+    /// The result value offset cannot be '0' (pointing to itself) so after validation this method returns '0'
     /// value as a marker for missing optional entry </summary>
     /// <param name="tablePos"> Table Position value in the Byte Buffer </param>
     /// <param name="vtableOffset"> offset value in the Table</param>
@@ -273,7 +273,7 @@ namespace Google.FlatBuffers
       short relPos = GetVRelOffset(Convert.ToInt32(tablePos), vtableOffset);
       if (relPos != 0)
       {
-        // Calculate offset based on table postion
+        // Calculate offset based on table position
         UOffset = Convert.ToUInt32(tablePos + relPos);
       }
       else
@@ -297,7 +297,7 @@ namespace Google.FlatBuffers
       return (((element & (align - 1)) == 0) || (!options.alignmentCheck));
     }
 
-    /// <summary> Check if element is valid in buffer area. </summary> 
+    /// <summary> Check if element is valid in buffer area. </summary>
     /// <param name="pos"> Value defines the offset/position to element</param>
     /// <param name="elementSize"> Size of element</param>
     /// <returns> Return True when Element is correct </returns>
@@ -340,7 +340,7 @@ namespace Google.FlatBuffers
       ulong max_elements = (FLATBUFFERS_MAX_BUFFER_SIZE / elementSize);
       if (size >= max_elements)
       {
-        // Protect against byte_size overflowing. 
+        // Protect against byte_size overflowing.
         // result.elementValid = false; result.elementOffset = 0;
         return result;
       }
@@ -457,7 +457,7 @@ namespace Google.FlatBuffers
 
     /// <summary> Verify beginning of table </summary>
     /// <param name="tablePos"> Position in the Table </param>
-    /// <returns> Return True when the verification of the beginning of the table is passed</returns> 
+    /// <returns> Return True when the verification of the beginning of the table is passed</returns>
     // (this method is used internally by generated verification functions)
     public bool VerifyTableStart(uint tablePos)
     {
@@ -482,7 +482,7 @@ namespace Google.FlatBuffers
       return true;
     }
 
-    /// <summary> Verifiy static/inlined data area field </summary>
+    /// <summary> Verify static/inlined data area field </summary>
     /// <param name="tablePos"> Position in the Table</param>
     /// <param name="offsetId"> Offset to the static/inlined data element </param>
     /// <param name="elementSize"> Size of the element </param>
@@ -500,7 +500,7 @@ namespace Google.FlatBuffers
       return !required; // it is OK if field is not required
     }
 
-    /// <summary> Verify string </summary> 
+    /// <summary> Verify string </summary>
     /// <param name="tablePos"> Position in the Table</param>
     /// <param name="vOffset"> Offset to the String element </param>
     /// <param name="required"> Required Value when the offset == 0 </param>
@@ -561,7 +561,7 @@ namespace Google.FlatBuffers
         return false;
       }
       var vecOffset = GetIndirectOffset(offset);
-      return CheckVectorOfObjects(vecOffset, CheckStringFunc); 
+      return CheckVectorOfObjects(vecOffset, CheckStringFunc);
     }
 
     /// <summary> Verify vector of tables (objects). Tables are verified using generated verifyObjFunc </summary>
@@ -633,9 +633,9 @@ namespace Google.FlatBuffers
         var vecStart = vecOffset + SIZE_U_OFFSET;
         // Create and Copy nested buffer bytes from part of Verify Buffer
         var nestedByteBuffer = new ByteBuffer(verifier_buffer.ToArray(Convert.ToInt32(vecStart), Convert.ToInt32(vecLength)));
-        var nestedVerifyier = new Verifier(nestedByteBuffer, options);
+        var nestedVerifier = new Verifier(nestedByteBuffer, options);
         // There is no internal identifier - use empty one
-        if (!nestedVerifyier.CheckBufferFromStart("", 0, verifyAction))
+        if (!nestedVerifier.CheckBufferFromStart("", 0, verifyAction))
         {
           return false;
         }
@@ -643,7 +643,7 @@ namespace Google.FlatBuffers
       return true;
     }
 
-    /// <summary> Verifiy static/inlined data area at absolute offset </summary>
+    /// <summary> Verify static/inlined data area at absolute offset </summary>
     /// <param name="pos"> Position of static/inlined data area in the Byte Buffer</param>
     /// <param name="elementSize"> Size of the union data</param>
     /// <param name="align"> Alignment bool value </param>
@@ -657,7 +657,7 @@ namespace Google.FlatBuffers
 
     /// <summary> Verify string referenced by absolute offset value </summary>
     /// <param name="pos"> Position of Union String in the Byte Buffer</param>
-    /// <returns>Return True when the verification of the Union String is passed</returns> 
+    /// <returns>Return True when the verification of the Union String is passed</returns>
     // (this method is used internally by generated verification functions)
     public bool VerifyUnionString(uint pos)
     {
@@ -705,7 +705,7 @@ namespace Google.FlatBuffers
     /// <summary> Verify vector of unions (objects). Unions are verified using generated verifyObjFunc </summary>
     /// <param name="tablePos"> Position of the Table</param>
     /// <param name="typeOffsetId"> Offset in the Table (Union type id)</param>
-    /// <param name="offsetId"> Offset to vector of Data Stucture offset</param>
+    /// <param name="offsetId"> Offset to vector of Data Structure offset</param>
     /// <param name="verifyAction"> Verification Method used for Union</param>
     /// <param name="required"> Required Value when the offset == 0 </param>
     /// <returns>Return True when the verification of the Vector of Unions passed</returns>
@@ -784,15 +784,15 @@ namespace Google.FlatBuffers
     //  /* Verify Monster table. Buffer name is 'MONS' and contains data length prefix */
     //  isValid = verifier.verifyBuffer("MONS", true, MonsterVerify)
     /// <summary> Method verifies flatbuffer data using generated Table verification function </summary>
-    /// 
+    ///
     /// <param name="identifier"> The expected identifier of buffer data</param>
     /// <param name="sizePrefixed"> Flag should be true when buffer is prefixed with content size</param>
     /// <param name="verifyAction"> Function to be used for verification. This function is generated by compiler and included in each table definition file</param>
     /// <returns> Return True when verification of FlatBuffer passed</returns>
     /// <example>
-    /// Example 1. Verify Monster table. Ignore buffer name and assume buffer does not contain data length prefix 
+    /// Example 1. Verify Monster table. Ignore buffer name and assume buffer does not contain data length prefix
     /// <code>  isValid = verifier.VerifyBuffer(bb, false, MonsterVerify)</code>
-    /// Example 2. Verify Monster table. Buffer name is 'MONS' and contains data length prefix 
+    /// Example 2. Verify Monster table. Buffer name is 'MONS' and contains data length prefix
     /// <code>  isValid = verifier.VerifyBuffer("MONS", true, MonsterVerify)</code>
     /// </example>
     public bool VerifyBuffer(string identifier, bool sizePrefixed, VerifyTableAction verifyAction)
@@ -802,7 +802,7 @@ namespace Google.FlatBuffers
       numTables = 0;
 
       var start = (uint)(verifier_buffer.Position);
-      if (sizePrefixed) 
+      if (sizePrefixed)
       {
         start = (uint)(verifier_buffer.Position) + SIZE_PREFIX_LENGTH;
         if(!CheckScalar((uint)(verifier_buffer.Position), SIZE_PREFIX_LENGTH))
@@ -814,7 +814,7 @@ namespace Google.FlatBuffers
         {
           return false;
         }
-      } 
+      }
       return CheckBufferFromStart(identifier, start, verifyAction);
     }
   }

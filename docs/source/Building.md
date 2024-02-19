@@ -37,7 +37,7 @@ flexibility for users of Flatbuffers to use newer compilers and toolsets that
 may add new warnings that would cause a build failure.
 
 To enable a stricter build that does treat warnings as errors, set the
-`FLATBUFFERS_STRICT_MODE` `cmake` compliation flag to `ON`. 
+`FLATBUFFERS_STRICT_MODE` `cmake` compilation flag to `ON`. 
 
 ```
 cmake . -DFLATBUFFERS_STRICT_MODE=ON

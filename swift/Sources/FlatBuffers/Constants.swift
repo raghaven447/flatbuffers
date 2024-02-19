@@ -25,7 +25,7 @@ import SwiftOverlayShims
 #endif
 
 /// A boolean to see if the system is littleEndian
-let isLitteEndian: Bool = {
+let isLittleEndian: Bool = {
   let number: UInt32 = 0x12345678
   return number == number.littleEndian
 }()
